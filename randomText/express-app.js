@@ -6,19 +6,22 @@ var loremIpsum = require('lorem-ipsum')
 
 app.use(express.static('public'));
 
-
 app.get('/lorem', function(req, resp){
-  resp.send(loremIpsum({
+  let lorem = loremIpsum({
     count: 3
     , units: 'paragraphs'
-  }))
+  });
+
+  resp.send(`<html><body><p>${lorem}</p></body></html>`)
 });
 
 app.get('/lorem/:numParagraphs', function(req, resp){
-  resp.send(loremIpsum({
+  let lorem = loremIpsum({
     count: req.params.numParagraphs
     , units: 'paragraphs'
-  }))
+  });
+
+  resp.send(`<html><body><p>${lorem}</p></body></html>`)
 });
 
 app.listen(3000, function(){
