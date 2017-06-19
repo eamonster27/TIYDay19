@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 
+app.use(express.static('public'))
+
 app.get('/', function(request, response){
-  response.send('<html><body><a href="/">Hello World</a></body></html>');
+  response.send('<html><head><link rel="stylesheet" href="/app.css"></head><body><a href="/">Hello World</a></body></html>');
 })
 
 app.get('/yolo', function(request, response) {
